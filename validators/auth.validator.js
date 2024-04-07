@@ -1,9 +1,9 @@
 import { checkSchema } from "express-validator";
 
-export const postProductoValidator = checkSchema(
+export const bodyAuthValidator = checkSchema(
     {
-        nombre:{
-            errorMessage : "Nombre no valido",
+        username:{
+            errorMessage : "Nombre de usuario no valido",
             notEmpty: true,
             isLength: {
                 errorMessage: "El tamaño debe ser minimo de 1 caracter",
@@ -14,8 +14,8 @@ export const postProductoValidator = checkSchema(
             },
 
         },
-        detalle:{
-            errorMessage : "Detalle no valido",
+        password:{
+            errorMessage : "Contraseña no valida",
             notEmpty: true,
             isLength: {
                 errorMessage: "El tamaño debe ser minimo de 1 caracter",
@@ -25,23 +25,7 @@ export const postProductoValidator = checkSchema(
                 }
             },
 
-        },
-        valor: {
-            matches : {options: /^[0-9]+$/},
-            errorMessage: "valor no valido",
-            notEmpty: true
         },
 
     },["body"]
-);
-
-export const idProductoValidator = checkSchema(
-    {
-        id: {
-            errorMessage: "Id no valido",
-            notEmpty: true,
-            isInt: true,
-        }
-
-    },["params"]
 );
